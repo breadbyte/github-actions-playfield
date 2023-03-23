@@ -30,7 +30,7 @@ jobs:
           
       - name: save cache
         uses: actions/cache/save@v3
-        if: ${{ !cache-check.cache-hit }}
+        if: ${{ !steps.cache-check.cache-hit }}
         with:
           path:  ${{ github.workspace }}/*
           key: "cache-${{ github.sha }}"
