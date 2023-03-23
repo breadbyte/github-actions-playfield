@@ -19,19 +19,19 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
   
-      - name: Cache
+      - name: check cache
         uses: actions/cache@v3.2.4
         id: cache-check
         with:
           path: ${{ github.workspace }}/*
-          key: 'translation-${{ github.sha }}'
+          key: 'cache-${{ github.sha }}'
           
   restore-cache:
     runs-on: ubuntu-latest
     steps:
-      - name: Restore Translations (if available)
+      - name: restore cache
         uses: actions/cache/restore@v3
         with:
           path: ${{ github.workspace }}/*
-          key: "translation-${{ github.sha }}"
-          restore-keys: "translation-"
+          key: "cache-${{ github.sha }}"
+          restore-keys: "cache-"
